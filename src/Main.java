@@ -175,8 +175,9 @@ public class Main extends JPanel implements KeyListener {
                     System.out.println("File created : " + myObj.getName());
                 }
 
-                FileWriter myWriter = new FileWriter(myObj.getName());
+                FileWriter myWriter = new FileWriter(myFileName);
                 myWriter.write("" + highestScore);
+                myWriter.close();
             } catch (IOException err) {
                 System.out.println("An Error occurred");
                 err.printStackTrace();
@@ -188,12 +189,10 @@ public class Main extends JPanel implements KeyListener {
         try {
             FileWriter myWriter = new FileWriter(myFileName);
             if(score > highestScore) {
-                System.out.println("Rewriting score...");
-                myWriter.write("" + score);
                 highestScore = score;
-            } else {
-                myWriter.write("" + highestScore);
             }
+            System.out.println("Rewriting score...");
+            myWriter.write("" + highestScore);
             myWriter.close();
         } catch (IOException err) {
             err.printStackTrace();

@@ -5,13 +5,10 @@ import java.util.ArrayList;
 public class Fruit {
     private int x;
     private int y;
-    private ImageIcon img;
-    private int snake_size;
 
     public Fruit() {
-        img = new ImageIcon("fruit.png");
-        this.x = (int) (Math.floor(Math.random() * Main.column) * Main.CELL_SIZE);
-        this.y = (int) (Math.floor(Math.random() * Main.row) * Main.CELL_SIZE);
+        this.x = calculatePosition(Main.column);
+        this.y = calculatePosition(Main.row);
     }
 
     public int getX() {
@@ -33,13 +30,17 @@ public class Fruit {
         boolean overlapping;
 
         do {
-            new_x = (int) (Math.floor(Math.random() * Main.column) * Main.CELL_SIZE);
-            new_y = (int) (Math.floor(Math.random() * Main.row) * Main.CELL_SIZE);
+            new_x = calculatePosition(Main.column);
+            new_y = calculatePosition(Main.row);
             overlapping = checkOverlap(new_x, new_y, s);
         } while (overlapping);
 
         this.x = new_x;
         this.y = new_y;
+    }
+
+    private int calculatePosition(int unit) {
+        return (int) (Math.floor(Math.random() * unit) * Main.CELL_SIZE);
     }
 
     private boolean checkOverlap(int x, int y, Snake s) {
