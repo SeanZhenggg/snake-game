@@ -24,8 +24,8 @@ public class Main extends JPanel implements KeyListener {
     private boolean allowKeyPress;
     private int score = 0;
     private int highestScore;
-    String desktopDir = System.getProperty("user.home") + "/Desktop/";
-    String myFileName = desktopDir + "highestScore.txt";
+    private String desktopDir = System.getProperty("user.home") + "/Desktop/";
+    private String myFileName = desktopDir + "highestScore.txt";
     private Snake snake;
     private Fruit fruit;
 
@@ -121,9 +121,7 @@ public class Main extends JPanel implements KeyListener {
     }
 
     @Override
-    public void keyTyped(KeyEvent e) {
-
-    }
+    public void keyTyped(KeyEvent e) {}
 
     @Override
     public void keyPressed(KeyEvent e) {
@@ -142,9 +140,7 @@ public class Main extends JPanel implements KeyListener {
     }
 
     @Override
-    public void keyReleased(KeyEvent e) {
-
-    }
+    public void keyReleased(KeyEvent e) {}
 
     private void setTimer() {
         t = new Timer();
@@ -155,6 +151,7 @@ public class Main extends JPanel implements KeyListener {
             }
         }, 0, speed);
     }
+
     private void reset() {
         score = 0;
         allowKeyPress = true;
